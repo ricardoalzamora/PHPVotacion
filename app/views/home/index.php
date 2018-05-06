@@ -1,10 +1,10 @@
 <?php require RUTA_APP . '/views/inc/header.php' ;?>
     <h1>Bienvenido a tu sistema de votación</h1>
     <div>
-        <a href="<?php echo RUTA_URL . '/Administrador/viewAdministrador' ?>">Administrador</a>
+        <a href="<?php echo RUTA_URL . '/Administrador/viewAdministrador' ?>" class="btn">Administrador</a>
     </div>
     <div>
-        <a href="<?php echo RUTA_URL . '/Votante/viewVotante' ?>">Votante</a>
+        <a href="<?php echo RUTA_URL . '/Votante/viewVotante' ?>"class="btn">Votante</a>
     </div>
 
     <div class="card center">
