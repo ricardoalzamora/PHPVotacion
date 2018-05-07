@@ -15,11 +15,7 @@ class Administrador extends Controlador
     }
 
     public function viewAdministrador() {
-        session_start();
-        if(!isset($_SESSION['id_usuario'])){
-            header('location: ' . RUTA_URL );
-            return;
-        }
+        Service::validarSesion();
         $usuarios = $this->usuarioModelo->obtenerUsuarios();
         $datos = [
             'usuarios' => $usuarios,
@@ -28,11 +24,7 @@ class Administrador extends Controlador
     }
 
     public function agregarUsuario(){
-        session_start();
-        if(!isset($_SESSION['id_usuario'])){
-            header('location: ' . RUTA_URL );
-            return;
-        }
+        Service::validarSesion();
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             if(!isset($_POST['jurado']) || $_POST['jurado'] != "1" ){
                 $jurado = "0";
@@ -87,6 +79,7 @@ class Administrador extends Controlador
             }
 
         }else{
+            Service::validarSesion();
             $id_mesas = $this->mesaModelo->obtenerMesas();
             $id_programas = $this->programaModelo->obtenerProgramas();
             $datos = [
@@ -111,11 +104,7 @@ class Administrador extends Controlador
     }
 
     public function editarUsuario(){
-        session_start();
-        if(!isset($_SESSION['id_usuario'])){
-            header('location: ' . RUTA_URL );
-            return;
-        }
+        Service::validarSesion();
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             if(!isset($_POST['jurado']) || $_POST['jurado'] != "1" ){
                 $jurado = "0";
@@ -170,10 +159,7 @@ class Administrador extends Controlador
             }
 
         }else{
-            if(!isset($_GET['id_usuario'])){
-                header('location: ' . RUTA_URL);
-                return;
-            }
+            Service::validarSesion();
             $id_mesas = $this->mesaModelo->obtenerMesas();
             $id_programas = $this->programaModelo->obtenerProgramas();
             $usuario = $this->usuarioModelo->obtenerUsuarioPorId($_GET['id_usuario']);
@@ -232,6 +218,22 @@ class Administrador extends Controlador
         }
     }
 
+    public function eliminarUsuario(){
+        Service::validarSesion();
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $id_rol = $this->usuarioModelo->obtenerUsuarioPorId($_POST['id_usuario'])[0]->id_rol;
+
+            try{
+                $this->usuarioModelo->eliminarUsuario($_POST['id_usuario']);
+                $this->rolModelo->eliminarRol($id_rol);
+            }catch (Exception $e){}
+            finally{
+                header('location: ' . RUTA_URL . '/Administrador/viewAdministrador');
+            }
+        }
+        header('location: ' . RUTA_URL . '/Administrador/viewAdministrador');
+    }
+
     public function login(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $usuario = $this->usuarioModelo->obtenerUsuarioPorId($_POST['id']);
@@ -239,10 +241,9 @@ class Administrador extends Controlador
                 session_start();
                 $_SESSION['id_usuario'] = $usuario[0]->id_usuario;
                 header('location: ' . RUTA_URL . '/Administrador/viewAdministrador');
-            }else{
-                header('location: ' . RUTA_URL);
             }
         }
+        header('location: ' . RUTA_URL);
     }
 
     public function logOut(){

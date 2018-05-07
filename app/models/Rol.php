@@ -35,6 +35,11 @@ class Rol
         $this->db->query("UPDATE rol SET jurado='$jurado', supervisor='$supervisor', testigo='$testigo', votante='$votante', administrador='$administrador' WHERE id_rol = '$id_rol'");
         return $this->db->execute();
     }
+
+    public function eliminarRol($id){
+        $this->db->query("DELETE FROM rol WHERE id_rol='$id'");
+        return $this->db->execute();
+    }
 }
 
 

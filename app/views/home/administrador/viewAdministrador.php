@@ -26,7 +26,7 @@
                     </form>
                 </td>
                 <td>
-                    <form action="<?php echo RUTA_URL; ?>/Administrador/eliminarUsuario/" method="get">
+                    <form action="<?php echo RUTA_URL; ?>/Administrador/eliminarUsuario/" method="post">
                         <input type="hidden" name="id_usuario" value="<?php echo $usuario->id_usuario; ?>">
                         <input class="btn" type="submit" value="Eliminar">
                     </form>

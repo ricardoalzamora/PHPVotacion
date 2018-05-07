@@ -44,4 +44,9 @@ class Usuario
         return $this->db->execute();
     }
 
+    public function eliminarUsuario($id){
+        $this->db->query("DELETE FROM usuarios WHERE id_usuario='$id'");
+        return $this->db->execute();
+    }
+
 }
