@@ -19,8 +19,18 @@
                 <td><?php echo $usuario->nombre; ?></td>
                 <td><?php echo $usuario->apellido; ?></td>
                 <td><?php echo $usuario->programa_nombre; ?></td>
-                <td><a href="<?php echo RUTA_URL; ?>/home/administrador/editarUsuario/<?php echo $usuario->id_usuario; ?>">Editar</a></td>
-                <td><a href="<?php echo RUTA_URL; ?>/home/administrador/eliminarUsuario/<?php echo $usuario->id_usuario; ?>">Eliminar</a></td>
+                <td>
+                    <form action="<?php echo RUTA_URL; ?>/Administrador/editarUsuario/" method="get">
+                        <input type="hidden" name="id_usuario" value="<?php echo $usuario->id_usuario; ?>">
+                        <input class="btn" type="submit" value="Editar">
+                    </form>
+                </td>
+                <td>
+                    <form action="<?php echo RUTA_URL; ?>/Administrador/eliminarUsuario/" method="get">
+                        <input type="hidden" name="id_usuario" value="<?php echo $usuario->id_usuario; ?>">
+                        <input class="btn" type="submit" value="Eliminar">
+                    </form>
+                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>

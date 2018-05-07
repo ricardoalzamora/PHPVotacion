@@ -32,4 +32,16 @@ class Usuario
         return $this->db->execute();
     }
 
+    public function editarUsuario($datos){
+        $id_usuario = $datos['id_usuario'];
+        $nombre = $datos['nombre'];
+        $apellido = $datos['apellido'];
+        $estado = $datos['estado'];
+        $id_mesa = $datos['id_mesa'];
+        $id_programa = $datos['id_programa'];
+        $contrasenia = $datos['contrasenia'];
+        $this->db->query("UPDATE usuarios SET nombre='$nombre', apellido='$apellido', estado='$estado', id_mesa='$id_mesa', id_programa='$id_programa', contrasenia='$contrasenia' WHERE id_usuario = '$id_usuario'");
+        return $this->db->execute();
+    }
+
 }

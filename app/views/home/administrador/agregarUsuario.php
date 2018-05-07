@@ -3,6 +3,7 @@
 <div class="row">
     <h3 class="center">Agregar Usuario</h3>
     <br>
+    <a href="<?php echo RUTA_URL; ?>/Administrador/viewAdministrador/" class="btn">Cancelar</a>
     <form class="col s12" action="<?php echo RUTA_URL; ?>/Administrador/agregarUsuario" method="POST">
 
         <div class="input-field col s12">
