@@ -1,4 +1,5 @@
 <?php require RUTA_APP . '/views/inc/header.php' ;?>
+    <a href="<?php echo RUTA_URL; ?>/Votante/logOut/" class="btn">Cancelar</a>
     <div>
         <form action="">
             <?php for($i = 1; $i < 5; $i++){

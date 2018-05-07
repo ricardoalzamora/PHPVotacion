@@ -14,6 +14,11 @@ class Usuario
         return $this->db->registros();
     }
 
+    public  function  obtenerUsuarioPorId($id){
+        $this->db->query("SELECT *  FROM usuarios JOIN rol ON usuarios.id_rol = rol.id_rol WHERE id_usuario = '$id'");
+        return $this->db->registros();
+    }
+
     public function agregarUsuario($datos){
         $this->db->query("INSERT INTO usuarios (id_usuario, nombre, apellido, estado, id_rol, id_mesa, id_programa, contrasenia) VALUES (:id_usuario, :nombre, :apellido, :estado, :id_rol, :id_mesa, :id_programa, :contrasenia)");
         $this->db->bind(':id_usuario', $datos['id_usuario']);

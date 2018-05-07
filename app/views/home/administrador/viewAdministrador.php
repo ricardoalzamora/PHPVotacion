@@ -1,5 +1,9 @@
 <?php require RUTA_APP . '/views/inc/header.php' ;?>
-    <a href="<?php echo RUTA_URL; ?>/Administrador/agregarUsuario/" class="btn">Agregar usuario</a>
+    <nav class="center">
+        <a href="<?php echo RUTA_URL; ?>/Administrador/agregarUsuario/" class="btn">Agregar usuario</a>
+        <a href="<?php echo RUTA_URL; ?>/Administrador/logOut/" class="btn">Cerrar Sesión</a>
+    </nav>
+
     <table class="table">
         <thead>
         <th>Id</th>

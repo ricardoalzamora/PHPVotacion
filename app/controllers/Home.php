@@ -9,6 +9,8 @@
 		}
 
 		public function index() {
+		    session_start();
+            session_destroy();
 			$usuarios = $this->usuarioModelo->obtenerUsuarios();
 			$datos = [
 				'usuarios' => $usuarios,

@@ -15,6 +15,11 @@ class Administrador extends Controlador
     }
 
     public function viewAdministrador() {
+        session_start();
+        if(!isset($_SESSION['id_usuario'])){
+            header('location: ' . RUTA_URL );
+            return;
+        }
         $usuarios = $this->usuarioModelo->obtenerUsuarios();
         $datos = [
             'usuarios' => $usuarios,
@@ -99,5 +104,23 @@ class Administrador extends Controlador
 
             $this->vista('home/Administrador/agregarUsuario', $datos);
         }
+    }
+
+    public function login(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $usuario = $this->usuarioModelo->obtenerUsuarioPorId($_POST['id']);
+            if($usuario[0]->contrasenia == $_POST['password'] && $usuario[0]->administrador == 1){
+                session_start();
+                $_SESSION['id_usuario'] = $usuario[0]->id_usuario;
+                header('location: ' . RUTA_URL . '/Administrador/viewAdministrador');
+            }else{
+                header('location: ' . RUTA_URL);
+            }
+        }
+    }
+
+    public function logOut(){
+        session_destroy();
+        header('location: ' . RUTA_URL);
     }
 }

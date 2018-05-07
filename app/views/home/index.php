@@ -15,8 +15,20 @@
                     <li class="tab col s3"><a href="#id_administrador">Administrador</a></li>
                 </ul>
             </div>
-            <div id="id_votante" class="col s12">Votante</div>
-            <div id="id_administrador" class="col s12">Administrador</div>
+            <div id="id_votante" class="form col s12">
+                <form action="<?php echo RUTA_URL; ?>/Votante/login" method="POST">
+                    <input type="number" name="id" placeholder="Documento">
+                    <input type="password" name="password" placeholder="Contraseña">
+                    <input class="btn" type="submit" value="Iniciar Sesión">
+                </form>
+            </div>
+            <div id="id_administrador" class="form col s12">
+                <form action="<?php echo RUTA_URL; ?>/Administrador/login" method="POST">
+                    <input type="number" name="id" placeholder="Documento">
+                    <input type="password" name="password" placeholder="Contraseña">
+                    <input class="btn" type="submit" value="Iniciar Sesión">
+                </form>
+            </div>
         </div>
     </div>
 
