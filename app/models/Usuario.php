@@ -44,6 +44,12 @@ class Usuario
         return $this->db->execute();
     }
 
+    public function asignarCandidato($datos){
+        $id = $datos['id_candidato'];
+        $this->db->query("UPDATE usuarios SET id_candidato='$id' WHERE id_usuario = '$id'");
+        return $this->db->execute();
+    }
+
     public function eliminarUsuario($id){
         $this->db->query("DELETE FROM usuarios WHERE id_usuario='$id'");
         return $this->db->execute();
