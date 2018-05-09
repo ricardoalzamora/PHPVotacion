@@ -6,19 +6,26 @@ class Administrador extends Controlador
     public $mesaModelo;
     public $programaModelo;
     public $rolModelo;
+    public $candidatoModelo;
+    public $organoModelo;
 
     public function __construct() {
         $this->usuarioModelo = $this->modelo('Usuario');
         $this->mesaModelo = $this->modelo('Mesa');
         $this->programaModelo = $this->modelo('Programa');
         $this->rolModelo = $this->modelo('Rol');
+        $this->candidatoModelo = $this->modelo('Candidato');
+        $this->organoModelo = $this->modelo('Organo');
     }
 
     public function viewAdministrador() {
         Service::validarSesion();
         $usuarios = $this->usuarioModelo->obtenerUsuarios();
+        $candidatos = $this->candidatoModelo->obtenerCandidatos();
         $datos = [
             'usuarios' => $usuarios,
+            'candidatos' => $candidatos,
+            'titulo' => 'Administrador'
         ];
         $this->vista('home/Administrador/viewAdministrador', $datos);
     }
@@ -234,6 +241,68 @@ class Administrador extends Controlador
         header('location: ' . RUTA_URL . '/Administrador/viewAdministrador');
     }
 
+    public function agregarCandidato(){
+        Service::validarSesion();
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $datos = [
+                'id_candidato' => $_POST['id_candidato'],
+                'foto' => $_POST['foto'],
+                'numero' => $_POST['numero'],
+                'id_organo' => $_POST['id_organo']
+            ];
+
+            if($this->candidatoModelo->agregarCandidato($datos) && $this->usuarioModelo->asignarCandidato($datos)){
+                header('location: ' . RUTA_URL . '/Administrador/viewAdministrador');
+            }else{
+                die('Algo salió mal.');
+            }
+
+        }else{
+            Service::validarSesion();
+            $id_usuarios = $this->usuarioModelo->obtenerUsuarios();
+            $id_organos = $this->organoModelo->obtenerOrganos();
+            $datos = [
+                'id_usuarios' => $id_usuarios,
+                'id_organos' => $id_organos,
+                'titulo' => 'Agregar Candidato'
+            ];
+
+            $this->vista('home/Administrador/agregarCandidato', $datos);
+        }
+    }
+
+    public function editarCandidato(){
+        Service::validarSesion();
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $datos = [
+                'id_candidato' => $_POST['id_candidato'],
+                'numero' => $_POST['numero'],
+                'id_organo' => $_POST['id_organo']
+            ];
+
+            if($this->candidatoModelo->editarCandidato($datos)){
+                header('location: ' . RUTA_URL . '/Administrador/viewAdministrador');
+            }else{
+                die('Algo salió mal.');
+            }
+
+        }else{
+            Service::validarSesion();
+            $id_organos = $this->organoModelo->obtenerOrganos();
+            $candidato = $this->candidatoModelo->obtenerCandidatoPorId($_GET['id_candidato']);
+
+            $datos = [
+                'id_organos' => $id_organos,
+                'numero' => $candidato[0]->numero,
+                'id_candidato' => $candidato[0]->id_candidato,
+                'id_organo' => $candidato[0]->id_organo,
+                'titulo' => 'Editar Candidato'
+            ];
+
+            $this->vista('home/Administrador/editarCandidato', $datos);
+        }
+    }
+
     public function login(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $usuario = $this->usuarioModelo->obtenerUsuarioPorId($_POST['id']);
@@ -241,6 +310,7 @@ class Administrador extends Controlador
                 session_start();
                 $_SESSION['id_usuario'] = $usuario[0]->id_usuario;
                 header('location: ' . RUTA_URL . '/Administrador/viewAdministrador');
+                return;
             }
         }
         header('location: ' . RUTA_URL);
