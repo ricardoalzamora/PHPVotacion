@@ -31,10 +31,10 @@ class Votante extends Controlador {
                 session_start();
                 $_SESSION['id_usuario'] = $usuario[0]->id_usuario;
                 header('location: ' . RUTA_URL . '/Votante/viewVotante');
-            }else{
-                header('location: ' . RUTA_URL);
+                return;
             }
         }
+        header('location: ' . RUTA_URL);
     }
 
     public function logOut(){
