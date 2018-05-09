@@ -14,7 +14,7 @@
 			$usuarios = $this->usuarioModelo->obtenerUsuarios();
 			$datos = [
 				'usuarios' => $usuarios,
-                'titulo' => 'Administrador'
+                'titulo' => 'Sistema de Votación'
 			];
 			$this->vista('home/index', $datos);
 		}
