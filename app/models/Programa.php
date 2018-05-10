@@ -9,7 +9,7 @@ class Programa
         $this->db = new Base;
     }
 
-    public  function  obtenerProgramas(){
+    public function obtenerProgramas(){
         $this->db->query('SELECT * FROM programas');
         return $this->db->registros();
     }

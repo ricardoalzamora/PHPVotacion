@@ -10,7 +10,7 @@ class Candidato
     }
 
     public function obtenerCandidatos(){
-        $this->db->query('SELECT usuarios.nombre, usuarios.apellido, candidatos.numero, candidatos.id_candidato, organos.id_organo, organos.nombre as organo_nombre FROM candidatos JOIN usuarios ON candidatos.id_candidato = usuarios.id_usuario JOIN organos ON organos.id_organo = candidatos.id_organo');
+        $this->db->query('SELECT usuarios.nombre, usuarios.apellido, candidatos.numero, candidatos.id_candidato, organos.id_organo, organos.nombre as organo_nombre, foto FROM candidatos JOIN usuarios ON candidatos.id_candidato = usuarios.id_usuario JOIN organos ON organos.id_organo = candidatos.id_organo');
         return $this->db->registros();
     }
 

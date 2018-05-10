@@ -9,7 +9,7 @@ class Mesa
         $this->db = new Base;
     }
 
-    public  function  obtenerMesas(){
+    public function obtenerMesas(){
         $this->db->query('SELECT * FROM mesas');
         return $this->db->registros();
     }
