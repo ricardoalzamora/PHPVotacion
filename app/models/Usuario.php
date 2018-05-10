@@ -9,12 +9,12 @@ class Usuario
         $this->db = new Base;
     }
 
-    public  function  obtenerUsuarios(){
+    public function obtenerUsuarios(){
         $this->db->query('SELECT id_usuario, usuarios.nombre, usuarios.apellido, programas.nombre as programa_nombre FROM usuarios JOIN programas ON usuarios.id_programa = programas.id_programa');
         return $this->db->registros();
     }
 
-    public  function  obtenerUsuarioPorId($id){
+    public function obtenerUsuarioPorId($id){
         $this->db->query("SELECT *  FROM usuarios JOIN rol ON usuarios.id_rol = rol.id_rol WHERE id_usuario = '$id'");
         return $this->db->registros();
     }
@@ -52,6 +52,11 @@ class Usuario
 
     public function eliminarUsuario($id){
         $this->db->query("DELETE FROM usuarios WHERE id_usuario='$id'");
+        return $this->db->execute();
+    }
+
+    public function inhabilitar($id){
+        $this->db->query("UPDATE usuarios SET estado=0 WHERE id_usuario = '$id'");
         return $this->db->execute();
     }
 
