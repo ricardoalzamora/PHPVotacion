@@ -12,13 +12,13 @@
             <?php foreach ($datos['candidatos'] as $canditato)  :
                 if($canditato->id_organo == 1){?>
                     <input type="radio" id="<?php echo $canditato->id_candidato; ?>"
-                           name="1" value="<?php echo $canditato->id_candidato; ?>">
+                           name="1" value="<?php echo $canditato->id_candidato; ?>" required>
                     <label for="<?php echo $canditato->id_candidato; ?>">
                         <h3><?php echo $canditato->nombre; ?></h3>
                         <img src="<?php echo $canditato->foto; ?>" alt="<?php echo $canditato->nombre; ?>">
                     </label>
             <?php } endforeach;?>
-            <input type="radio" id="1blanco" name="1" value="1blanco">
+            <input type="radio" id="1blanco" name="1" value="1blanco" required>
             <label for="1blanco">
                 <div class="div_blanco">
                     <h3>Voto en Blanco</h3>
@@ -29,13 +29,13 @@
             <?php foreach ($datos['candidatos'] as $canditato)  :
                 if($canditato->id_organo == 2){?>
                     <input type="radio" id="<?php echo $canditato->id_candidato; ?>"
-                           name="2" value="<?php echo $canditato->id_candidato; ?>">
+                           name="2" value="<?php echo $canditato->id_candidato; ?>" required>
                     <label for="<?php echo $canditato->id_candidato; ?>">
                         <h3><?php echo $canditato->nombre; ?></h3>
                         <img src="<?php echo $canditato->foto; ?>" alt="<?php echo $canditato->nombre; ?>">
                     </label>
                 <?php } endforeach;?>
-            <input type="radio" id="2blanco" name="2" value="2blanco">
+            <input type="radio" id="2blanco" name="2" value="2blanco" required>
             <label for="2blanco">
                 <div class="div_blanco">
                     <h3>Voto en Blanco</h3>
@@ -46,13 +46,13 @@
             <?php foreach ($datos['candidatos'] as $canditato)  :
                 if($canditato->id_organo == 3){?>
                     <input type="radio" id="<?php echo $canditato->id_candidato; ?>"
-                           name="3" value="<?php echo $canditato->id_candidato; ?>">
+                           name="3" value="<?php echo $canditato->id_candidato; ?>" required>
                     <label for="<?php echo $canditato->id_candidato; ?>">
                         <h3><?php echo $canditato->nombre; ?></h3>
                         <img src="<?php echo $canditato->foto; ?>" alt="<?php echo $canditato->nombre; ?>">
                     </label>
                 <?php } endforeach;?>
-            <input type="radio" id="3blanco" name="3" value="3blanco">
+            <input type="radio" id="3blanco" name="3" value="3blanco" required>
             <label for="3blanco">
                 <div class="div_blanco">
                     <h3>Voto en Blanco</h3>
@@ -63,19 +63,19 @@
             <?php foreach ($datos['candidatos'] as $canditato)  :
                 if($canditato->id_organo == 4){?>
                     <input type="radio" id="<?php echo $canditato->id_candidato; ?>"
-                           name="4" value="<?php echo $canditato->id_candidato; ?>">
+                           name="4" value="<?php echo $canditato->id_candidato; ?>" required>
                     <label for="<?php echo $canditato->id_candidato; ?>">
                         <h3><?php echo $canditato->nombre; ?></h3>
                         <img src="<?php echo $canditato->foto; ?>" alt="<?php echo $canditato->nombre; ?>">
                     </label>
                 <?php } endforeach;?>
-            <input type="radio" id="4blanco" name="4" value="4blanco">
+            <input type="radio" id="4blanco" name="4" value="4blanco" required>
             <label for="4blanco">
                 <div class="div_blanco">
                     <h3>Voto en Blanco</h3>
                 </div>
             </label>
-            <input class="btn btn-success" type="submit" value="Votar">
+            <input class="btn btn-success" type="submit" id="btn-submit" value="Votar">
         </div>
 
     </div>
