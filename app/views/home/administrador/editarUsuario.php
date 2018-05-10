@@ -4,7 +4,7 @@
         <h3><?php echo $datos['titulo']; ?></h3>
         <br>
         <a href="<?php echo RUTA_URL; ?>/Administrador/viewAdministrador/" class="btn btn-danger">Cancelar</a>
-        <form id="form" class="card" action="<?php echo RUTA_URL; ?>/Administrador/editarUsuario" method="POST">
+        <form name="form_usuario" id="form" class="card" action="<?php echo RUTA_URL; ?>/Administrador/editarUsuario" method="POST">
 
             <div class="form-group col-md-6">
                 <h4>Usuario</h4>
@@ -61,7 +61,7 @@
             </div>
 
             <div class="form-group col-md-6">
-                <input name="id_rol" type="hidden" value="<?php echo $datos['id_rol']; ?>">
+                <input name="id_rol" id="id_rol" type="hidden" value="<?php echo $datos['id_rol']; ?>">
             </div>
 
             <div class="form-group col-md-6">
@@ -103,10 +103,16 @@
 
             <div class="form-group col-md-6">
                 <label>
-                    <input class="btn btn-success" type="submit" value="Guardar Cambios">
+                    <input class="btn btn-success" type="button" id="btn-submit" value="Guardar Cambios">
                 </label>
             </div>
         </form>
     </div>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("btn-submit").onclick = validarUsuario;
+        }
+    </script>
 
 <?php require RUTA_APP . '/views/inc/footer.php' ;?>

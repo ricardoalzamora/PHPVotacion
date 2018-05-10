@@ -75,7 +75,7 @@
                     <h3>Voto en Blanco</h3>
                 </div>
             </label>
-            <input class="btn btn-success" type="submit" id="btn-submit" value="Votar">
+            <input class="btn btn-success" type="submit" value="Votar">
         </div>
 
     </div>

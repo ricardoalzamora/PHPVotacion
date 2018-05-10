@@ -30,3 +30,33 @@ function validarLogin2() {
         document.form_login_2.submit();
     }
 }
+
+function validarCandidato() {
+    var verificar = true;
+
+    if(!document.getElementById("numero").value){
+        error();
+        verificar = false;
+    }
+
+    if(verificar){
+        document.form_candidato.submit();
+    }
+}
+
+function validarUsuario() {
+    var verificar = true;
+
+    if(!document.getElementById("id_usuario").value
+        || !document.getElementById("nombre").value
+        || !document.getElementById("apellido").value
+        || !document.getElementById("contrasenia").value
+        || !document.getElementById("id_rol").value){
+        error();
+        verificar = false;
+    }
+
+    if(verificar){
+        document.form_usuario.submit();
+    }
+}

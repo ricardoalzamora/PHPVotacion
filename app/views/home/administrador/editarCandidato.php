@@ -4,7 +4,7 @@
         <h3><?php echo $datos['titulo']; ?></h3>
         <br>
         <a href="<?php echo RUTA_URL; ?>/Administrador/viewAdministrador/" class="btn btn-danger">Cancelar</a>
-        <form id="form" class="card" action="<?php echo RUTA_URL; ?>/Administrador/editarCandidato" method="POST">
+        <form name="form_candidato" id="form" class="card" action="<?php echo RUTA_URL; ?>/Administrador/editarCandidato" method="POST">
 
             <div>
                 <input name="id_candidato" type="hidden" value="<?php echo $datos['id_candidato']; ?>">
@@ -30,10 +30,16 @@
 
             <div class="form-group col-md-6">
                 <label>
-                    <input class="btn btn-success" type="submit" value="Guardar Cambios">
+                    <input class="btn btn-success" type="button" id="btn-submit" value="Guardar Cambios">
                 </label>
             </div>
         </form>
     </div>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("btn-submit").onclick = validarCandidato;
+        }
+    </script>
 
 <?php require RUTA_APP . '/views/inc/footer.php' ;?>
