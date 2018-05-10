@@ -4,24 +4,43 @@ class Votante extends Controlador {
 
     public $candidatoModelo;
     public $usuarioModelo;
+    public $votoModelo;
 
     public function __construct() {
         $this->candidatoModelo = $this->modelo('Candidato');
         $this->usuarioModelo = $this->modelo('Usuario');
+        $this->votoModelo  = $this->modelo('Voto');
     }
 
     public function viewVotante() {
-        session_start();
-        if(!isset($_SESSION['id_usuario'])){
-            header('location: ' . RUTA_URL );
-            return;
-        }
+        Service::validarSesion();
         $candidatos = $this->candidatoModelo->obtenerCandidatos();
         $datos = [
             'candidatos' => $candidatos,
             'titulo' => 'Vota'
         ];
         $this->vista('home/votante/viewVotante', $datos);
+    }
+
+    public function votar(){
+        Service::validarSesion();
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $votante = $this->usuarioModelo->obtenerUsuarioPorId($_SESSION['id_usuario']);
+            foreach ($votante as $mesa)  :
+
+            for($i = 1; $i < 5; $i++){
+                $datos = [
+                    'id_candidato' => $_POST[$i],
+                    'mesa' => $mesa->id_mesa
+                ];
+                if(!$this->votoModelo->agregarVoto($datos)){
+                    die('Algo salió mal.');
+                }
+            }
+            endforeach;
+            $this->usuarioModelo->inhabilitar($_SESSION['id_usuario']);
+            header('location: ' . RUTA_URL);
+        }
     }
 
     public function login(){
