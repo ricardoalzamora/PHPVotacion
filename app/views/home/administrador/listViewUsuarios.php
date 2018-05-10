@@ -4,7 +4,7 @@
             <th>Id</th>
             <th>Nombre</th>
             <th>Apellido</th>
-            <th>Porgrama</th>
+            <th>Programa</th>
             <th>Acciones</th>
         </tr>
     </thead>

@@ -1,36 +1,39 @@
 <?php require RUTA_APP . '/views/inc/header.php' ;?>
 
-<div class="row">
-    <h3 class="center">Agregar Usuario</h3>
+<div>
+    <h3><?php echo $datos['titulo']; ?></h3>
     <br>
-    <a href="<?php echo RUTA_URL; ?>/Administrador/viewAdministrador/" class="btn">Cancelar</a>
-    <form class="col s12" action="<?php echo RUTA_URL; ?>/Administrador/agregarUsuario" method="POST">
+    <a href="<?php echo RUTA_URL; ?>/Administrador/viewAdministrador/" class="btn btn-danger">Cancelar</a>
+    <form id="form" class="card" action="<?php echo RUTA_URL; ?>/Administrador/agregarUsuario" method="POST">
 
-        <div class="input-field col s12">
+        <div class="form-group col-md-6">
             <h4>Usuario</h4>
             <hr>
         </div>
 
-        <div class="input-field col s2">
-            <input name="id_usuario" placeholder="Id Usuario" type="number" class="validate">
+        <div class="form-group col-md-6">
+            <label for="id_usuario">Ingresa el Id</label>
+            <input class="form-control" name="id_usuario" id="id_usuario" placeholder="Id Usuario" type="number">
         </div>
 
-        <div class="input-field col s5">
-            <input name="nombre" placeholder="Nombre" type="text" class="validate">
+        <div class="form-group col-md-6">
+            <label for="nombre">Ingresa el Nombre</label>
+            <input class="form-control" name="nombre" id="nombre" placeholder="Nombre" type="text">
         </div>
 
-        <div class="input-field col s5">
-            <input name="apellido" placeholder="Apellido" type="text" class="validate">
+        <div class="form-group col-md-6">
+            <label for="apellido">Ingresa el Apellido</label>
+            <input class="form-control" name="apellido" id="apellido" placeholder="Apellido" type="text">
         </div>
 
-        <div class="input-field col s4">
+        <div class="form-group col-md-6">
             <label>
                 <input name="habilitado" type="checkbox" class="filled-in" value="1">
                 <span>Habilitado</span>
             </label>
         </div>
 
-        <div class="input-field col s4">
+        <div class="form-group col-md-6">
             <label for="id_mesa">Escoge la Mesa</label>
             <select class="form-control" name="id_mesa" id="id_mesa">
                 <?php foreach ($datos['id_mesas'] as $mesa)  :  ?>
@@ -39,57 +42,59 @@
             </select>
         </div>
 
-        <div class="input-field col s4">
+        <div class="form-group col-md-6">
             <label for="id_programa">Escoge el Programa</label>
             <select class="form-control" name="id_programa" id="id_programa">
                 <?php foreach ($datos['id_programas'] as $programa)  :  ?>
-                    <option value="<?php echo $programa->id_programa; ?>"><?php echo $programa->id_programa; ?></option>
+                    <option value="<?php echo $programa->id_programa; ?>"><?php echo $programa->nombre; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
 
-        <div class="input-field col s4">
-            <input name="contrasenia" placeholder="Contraseña" type="password" class="validate">
+        <div class="form-group col-md-6">
+            <label for="contrasenia">Ingresa la Contraseña</label>
+            <input class="form-control" name="contrasenia" id="contrasenia" placeholder="Contraseña" type="password">
         </div>
 
-        <div class="input-field col s12">
+        <div class="form-group col-md-6">
             <h4>Rol</h4>
             <hr>
         </div>
 
-        <div class="input-field col s4">
-            <input name="id_rol" placeholder="Id Rol" type="number" class="validate">
+        <div class="form-group col-md-6">
+            <label for="id_rol">Ingresa el Id Rol</label>
+            <input class="form-control" name="id_rol" id="id_rol" placeholder="Id Rol" type="number">
         </div>
 
-        <div class="input-field col s2">
+        <div class="form-group col-md-6">
             <label>
                 <input name="jurado" type="checkbox" class="filled-in" value="1">
                 <span>Jurado</span>
             </label>
         </div>
 
-        <div class="input-field col s2">
+        <div class="form-group col-md-6">
             <label>
                 <input name="supervisor" type="checkbox" class="filled-in" value="1">
                 <span>Supervisor</span>
             </label>
         </div>
 
-        <div class="input-field col s2">
+        <div class="form-group col-md-6">
             <label>
                 <input name="testigo" type="checkbox" class="filled-in" value="1">
                 <span>Testigo</span>
             </label>
         </div>
 
-        <div class="input-field col s2">
+        <div class="form-group col-md-6">
             <label>
                 <input name="votante" type="checkbox" class="filled-in" value="1">
                 <span>Votante</span>
             </label>
         </div>
 
-        <div class="input-field col s2">
+        <div class="form-group col-md-6">
             <label>
                 <input name="administrador" type="checkbox" class="filled-in" value="1">
                 <span>Administrador</span>
@@ -98,9 +103,9 @@
 
         <br>
 
-        <div class="input-field col s12">
+        <div class="form-group col-md-6">
             <label>
-                <input class="btn" type="submit" value="Guardar">
+                <input class="btn btn-success" type="submit" value="Guardar">
             </label>
         </div>
     </form>

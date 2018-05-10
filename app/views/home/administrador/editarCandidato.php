@@ -1,19 +1,23 @@
 <?php require RUTA_APP . '/views/inc/header.php' ;?>
 
-    <div class="row">
-        <h3 class="center">Editar Candidato</h3>
+    <div>
+        <h3><?php echo $datos['titulo']; ?></h3>
         <br>
-        <form class="col s12" action="<?php echo RUTA_URL; ?>/Administrador/editarCandidato" method="POST">
+        <a href="<?php echo RUTA_URL; ?>/Administrador/viewAdministrador/" class="btn btn-danger">Cancelar</a>
+        <form id="form" class="card" action="<?php echo RUTA_URL; ?>/Administrador/editarCandidato" method="POST">
 
-            <div class="input-field col s2">
-                <input name="id_candidato" type="hidden" value="<?php echo $datos['id_candidato']; ?>" class="validate">
+            <div>
+                <input name="id_candidato" type="hidden" value="<?php echo $datos['id_candidato']; ?>">
             </div>
 
-            <div class="input-field col s5">
-                <input name="numero" placeholder="Numero" type="text" value="<?php echo $datos['numero']; ?>" class="validate">
+            <div class="form-group col-md-6">
+                <label for="numero">Número</label>
+                <input class="form-control" name="numero" id="numero" placeholder="Numero" type="number" value="<?php echo $datos['numero']; ?>">
             </div>
 
-            <div class="input-field col s4">
+            <br>
+
+            <div class="form-group col-md-6">
                 <label for="id_organo">Escoge el Organo</label>
                 <select class="form-control" name="id_organo" id="id_organo">
                     <?php foreach ($datos['id_organos'] as $organo)  :  ?>
@@ -24,9 +28,9 @@
 
             <br>
 
-            <div class="input-field col s12">
+            <div class="form-group col-md-6">
                 <label>
-                    <input class="btn" type="submit" value="Guardar Cambios">
+                    <input class="btn btn-success" type="submit" value="Guardar Cambios">
                 </label>
             </div>
         </form>
