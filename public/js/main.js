@@ -1,0 +1,32 @@
+function error() {
+    swal({
+        type: 'error',
+        title: 'Error',
+        text: 'Verifica los datos!',
+    });
+}
+
+function validarLogin1() {
+    var verificar = true;
+
+    if(!document.getElementById("id_1").value || !document.getElementById("password_1").value){
+        error();
+        verificar = false;
+    }
+
+    if(verificar){
+        document.form_login_1.submit();
+    }
+}
+function validarLogin2() {
+    var verificar = true;
+
+    if(!document.getElementById("id_2").value || !document.getElementById("password_2").value){
+        error();
+        verificar = false;
+    }
+
+    if(verificar){
+        document.form_login_2.submit();
+    }
+}

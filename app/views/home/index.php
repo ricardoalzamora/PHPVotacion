@@ -12,24 +12,31 @@
         <br>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="id_votante" role="tabpanel" aria-labelledby="nav-home-tab">
-                <form action="<?php echo RUTA_URL; ?>/Votante/login" method="POST">
-                    <input class="form-control" type="number" name="id" placeholder="Documento">
+                <form name="form_login_1" action="<?php echo RUTA_URL; ?>/Votante/login" method="POST">
+                    <input class="form-control" type="number" name="id" id="id_1" placeholder="Documento">
                     <br>
-                    <input class="form-control" type="password" name="password" placeholder="Contraseña">
+                    <input class="form-control" type="password" name="password" id="password_1" placeholder="Contraseña">
                     <br>
-                    <input class="btn btn-success" type="submit" value="Iniciar Sesión">
+                    <input class="btn btn-success" type="button" id="btn-submit-1" value="Iniciar Sesión">
                 </form>
             </div>
             <div class="tab-pane fade" id="id_administrador" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <form action="<?php echo RUTA_URL; ?>/Administrador/login" method="POST">
-                    <input class="form-control" type="number" name="id" placeholder="Documento">
+                <form name="form_login_2" action="<?php echo RUTA_URL; ?>/Administrador/login" method="POST">
+                    <input class="form-control" type="number" name="id" id="id_2" placeholder="Documento">
                     <br>
-                    <input class="form-control" type="password" name="password" placeholder="Contraseña">
+                    <input class="form-control" type="password" name="password" id="password_2" placeholder="Contraseña">
                     <br>
-                    <input class="btn btn-success" type="submit" value="Iniciar Sesión">
+                    <input class="btn btn-success" type="button" id="btn-submit-2" value="Iniciar Sesión">
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("btn-submit-1").onclick = validarLogin1;
+            document.getElementById("btn-submit-2").onclick = validarLogin2;
+        }
+    </script>
 
 <?php require RUTA_APP . '/views/inc/footer.php' ;?>

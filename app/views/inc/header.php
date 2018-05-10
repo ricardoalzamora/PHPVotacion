@@ -10,6 +10,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo RUTA_URL; ?>/public/css/styles.css">
+    <script src="<?php echo RUTA_URL; ?>/public/js/sweetalert2.js"></script>
+    <script src="<?php echo RUTA_URL; ?>/public/js/main.js"></script>
 
     <title><?php echo $datos['titulo']; ?></title>
 </head>
