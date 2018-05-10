@@ -31,21 +31,21 @@
         </div>
 
         <div class="input-field col s4">
-            <input placeholder="Mesa" list="mesa" name="id_mesa">
-            <datalist id="mesa">
+            <label for="id_mesa">Escoge la Mesa</label>
+            <select class="form-control" name="id_mesa" id="id_mesa">
                 <?php foreach ($datos['id_mesas'] as $mesa)  :  ?>
-                <option value="<?php echo $mesa->id_mesa; ?>">
-                    <?php endforeach; ?>
-            </datalist>
+                    <option value="<?php echo $mesa->id_mesa; ?>"><?php echo $mesa->id_mesa; ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
 
         <div class="input-field col s4">
-            <input placeholder="Programa" list="programa" name="id_programa">
-            <datalist id="programa">
+            <label for="id_programa">Escoge el Programa</label>
+            <select class="form-control" name="id_programa" id="id_programa">
                 <?php foreach ($datos['id_programas'] as $programa)  :  ?>
-                <option value="<?php echo $programa->id_programa; ?>">
-                    <?php endforeach; ?>
-            </datalist>
+                    <option value="<?php echo $programa->id_programa; ?>"><?php echo $programa->id_programa; ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
 
         <div class="input-field col s4">

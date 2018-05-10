@@ -12,12 +12,12 @@
             </div>
 
             <div class="input-field col s4">
-                <input placeholder="ID Candidado" list="candidato" name="id_candidato">
-                <datalist id="candidato">
+                <label for="id_candidato">Escoge el Candidato</label>
+                <select class="form-control" name="id_candidato" id="id_candidato">
                     <?php foreach ($datos['id_usuarios'] as $usuario)  :  ?>
-                    <option value="<?php echo $usuario->id_usuario; ?>">
-                        <?php endforeach; ?>
-                </datalist>
+                        <option value="<?php echo $usuario->id_usuario; ?>"><?php echo $usuario->id_usuario; ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
 
             <div class="input-field col s5">
@@ -29,12 +29,12 @@
             </div>
 
             <div class="input-field col s4">
-                <input placeholder="Organo" list="organo" name="id_organo">
-                <datalist id="organo">
+                <label for="id_organo">Escoge el Organo</label>
+                <select class="form-control" name="id_organo" id="id_organo">
                     <?php foreach ($datos['id_organos'] as $organo)  :  ?>
-                    <option value="<?php echo $organo->id_organo; ?>">
-                        <?php endforeach; ?>
-                </datalist>
+                        <option value="<?php echo $organo->id_organo; ?>"><?php echo $organo->id_organo; ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
 
             <br>

@@ -14,12 +14,12 @@
             </div>
 
             <div class="input-field col s4">
-                <input placeholder="Organo" list="organo" value="<?php echo $datos['id_organo']; ?>" name="id_organo">
-                <datalist id="organo">
+                <label for="id_organo">Escoge el Organo</label>
+                <select class="form-control" name="id_organo" id="id_organo">
                     <?php foreach ($datos['id_organos'] as $organo)  :  ?>
-                    <option value="<?php echo $organo->id_organo; ?>">
-                        <?php endforeach; ?>
-                </datalist>
+                        <option value="<?php echo $organo->id_organo; ?>"><?php echo $organo->id_organo; ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
 
             <br>
