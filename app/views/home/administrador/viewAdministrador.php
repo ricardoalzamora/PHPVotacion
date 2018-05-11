@@ -1,8 +1,9 @@
 <?php require RUTA_APP . '/views/inc/header.php' ;?>
     <nav class="nav justify-content-end">
-        <a class="nav-link" href="<?php echo RUTA_URL; ?>/Administrador/agregarUsuario/">Agregar usuario</a>
-        <a class="nav-link" href="<?php echo RUTA_URL; ?>/Administrador/agregarCandidato/">Agregar candidato</a>
-        <a class="nav-link" href="<?php echo RUTA_URL; ?>/Administrador/logOut/">Cerrar Sesión</a>
+        <a class="nav-link" href="<?php echo RUTA_URL; ?>/Administrador/agregarUsuario">Agregar usuario</a>
+        <a class="nav-link" href="<?php echo RUTA_URL; ?>/Administrador/agregarCandidato">Agregar candidato</a>
+        <a class="nav-link" href="<?php echo RUTA_URL; ?>/Administrador/estadistica">Estadísticas</a>
+        <a class="nav-link" href="<?php echo RUTA_URL; ?>/Administrador/logOut">Cerrar Sesión</a>
     </nav>
 
     <div class="nav nav-tabs" id="nav-tab" role="tablist">

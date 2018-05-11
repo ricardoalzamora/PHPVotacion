@@ -8,6 +8,7 @@ class Administrador extends Controlador
     public $rolModelo;
     public $candidatoModelo;
     public $organoModelo;
+    public $votoModelo;
 
     public function __construct() {
         $this->usuarioModelo = $this->modelo('Usuario');
@@ -16,6 +17,7 @@ class Administrador extends Controlador
         $this->rolModelo = $this->modelo('Rol');
         $this->candidatoModelo = $this->modelo('Candidato');
         $this->organoModelo = $this->modelo('Organo');
+        $this->votoModelo = $this->modelo('Voto');
     }
 
     public function viewAdministrador() {
@@ -301,6 +303,17 @@ class Administrador extends Controlador
 
             $this->vista('home/Administrador/editarCandidato', $datos);
         }
+    }
+
+    public function estadistica(){
+        $votos = $this->votoModelo->obtenerVotos();
+        $votosBlancos = $this->votoModelo->obtenerVotosBlancos();
+        $datos = [
+            'votos' => $votos,
+            'votosBlancos' => $votosBlancos,
+            'titulo' => 'Estadística'
+        ];
+        $this->vista('home/Administrador/estadistica', $datos);
     }
 
     public function login(){
