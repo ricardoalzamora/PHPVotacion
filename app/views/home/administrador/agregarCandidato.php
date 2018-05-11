@@ -3,7 +3,7 @@
     <div>
         <h3><?php echo $datos['titulo']; ?></h3>
         <br>
-        <a href="<?php echo RUTA_URL; ?>/Administrador/viewAdministrador/" class="btn btn-danger">Cancelar</a>
+        <a href="<?php echo RUTA_URL; ?>/Administrador/viewAdministrador" class="btn btn-danger">Cancelar</a>
         <form name="form_candidato" id="form" class="card" action="<?php echo RUTA_URL; ?>/Administrador/agregarCandidato" method="POST">
 
             <div class="form-group col-md-6">
