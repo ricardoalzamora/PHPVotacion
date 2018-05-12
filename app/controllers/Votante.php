@@ -19,7 +19,7 @@ class Votante extends Controlador {
             'candidatos' => $candidatos,
             'titulo' => 'Vota'
         ];
-        $this->vista('home/votante/viewVotante', $datos);
+        $this->vista('home/Votante/viewVotante', $datos);
     }
 
     public function votar(){
@@ -39,8 +39,17 @@ class Votante extends Controlador {
             }
             endforeach;
             $this->usuarioModelo->inhabilitar($_SESSION['id_usuario']);
-            header('location: ' . RUTA_URL);
+            $this->certificado();
         }
+    }
+
+    public function certificado(){
+        Service::validarSesion();
+        $votante = $this->usuarioModelo->obtenerUsuarioPorId($_SESSION['id_usuario']);
+        $datos = [
+            'votante' => $votante[0]
+        ];
+        $this->vista('home/Votante/certificado', $datos);
     }
 
     public function login(){
