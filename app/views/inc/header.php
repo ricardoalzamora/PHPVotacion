@@ -16,4 +16,15 @@
     <title><?php echo $datos['titulo']; ?></title>
 </head>
 <body>
+<p id="clock" style="position: absolute"></p>
+<script>
+    var myVar = setInterval(function () {
+        myTimer();
+    }, 1000);
+
+    function myTimer() {
+        var d = new Date();
+        document.getElementById("clock").innerHTML = d.toLocaleTimeString();
+    }
+</script>
 <main>
