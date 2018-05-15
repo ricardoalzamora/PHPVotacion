@@ -248,12 +248,13 @@ class Administrador extends Controlador
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $datos = [
                 'id_candidato' => $_POST['id_candidato'],
-                'foto' => $_POST['foto'],
+                'foto' => $_FILES['foto']['name'],
                 'numero' => $_POST['numero'],
                 'id_organo' => $_POST['id_organo']
             ];
 
             if($this->candidatoModelo->agregarCandidato($datos) && $this->usuarioModelo->asignarCandidato($datos)){
+                move_uploaded_file($_FILES['foto']['tmp_name'],"img/candidatos/" . $_FILES['foto']['name']);
                 header('location: ' . RUTA_URL . '/Administrador/viewAdministrador');
             }else{
                 die('Algo salió mal.');
