@@ -15,8 +15,10 @@ class Votante extends Controlador {
     public function viewVotante() {
         Service::validarSesion();
         $candidatos = $this->candidatoModelo->obtenerCandidatos();
+        $votante = $this->usuarioModelo->obtenerUsuarioPorId($_SESSION['id_usuario']);
         $datos = [
             'candidatos' => $candidatos,
+            'votante' => $votante[0],
             'titulo' => 'Vota'
         ];
         $this->vista('home/Votante/viewVotante', $datos);
