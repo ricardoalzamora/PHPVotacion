@@ -1,4 +1,5 @@
 <?php require RUTA_APP . '/views/inc/header.php' ;?>
+    <h1>Bienvenido a tu sistema de votación <?php echo $datos['votante']->nombre . " " . $datos['votante']->apellido; ?></h1>
     <a href="<?php echo RUTA_URL; ?>/Votante/logOut/" class="btn btn-danger">Cancelar</a>
     <form id="form" action="<?php echo RUTA_URL; ?>/Votante/votar" method="post">
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -15,7 +16,7 @@
                            name="1" value="<?php echo $canditato->id_candidato; ?>" required>
                     <label for="<?php echo $canditato->id_candidato; ?>">
                         <h3><?php echo $canditato->nombre; ?></h3>
-                        <img src="<?php echo $canditato->foto; ?>" alt="<?php echo $canditato->nombre; ?>">
+                        <img src="<?php echo RUTA_URL . "/public/img/candidatos/" . $canditato->foto; ?>" alt="<?php echo $canditato->nombre; ?>">
                     </label>
             <?php } endforeach;?>
             <input type="radio" id="1blanco" name="1" value="1blanco" required>
@@ -32,7 +33,7 @@
                            name="2" value="<?php echo $canditato->id_candidato; ?>" required>
                     <label for="<?php echo $canditato->id_candidato; ?>">
                         <h3><?php echo $canditato->nombre; ?></h3>
-                        <img src="<?php echo $canditato->foto; ?>" alt="<?php echo $canditato->nombre; ?>">
+                        <img src="<?php echo RUTA_URL . "/public/img/candidatos/" . $canditato->foto; ?>" alt="<?php echo $canditato->nombre; ?>">
                     </label>
                 <?php } endforeach;?>
             <input type="radio" id="2blanco" name="2" value="2blanco" required>
@@ -49,7 +50,7 @@
                            name="3" value="<?php echo $canditato->id_candidato; ?>" required>
                     <label for="<?php echo $canditato->id_candidato; ?>">
                         <h3><?php echo $canditato->nombre; ?></h3>
-                        <img src="<?php echo $canditato->foto; ?>" alt="<?php echo $canditato->nombre; ?>">
+                        <img src="<?php echo RUTA_URL . "/public/img/candidatos/" . $canditato->foto; ?>" alt="<?php echo $canditato->nombre; ?>">
                     </label>
                 <?php } endforeach;?>
             <input type="radio" id="3blanco" name="3" value="3blanco" required>
@@ -66,7 +67,7 @@
                            name="4" value="<?php echo $canditato->id_candidato; ?>" required>
                     <label for="<?php echo $canditato->id_candidato; ?>">
                         <h3><?php echo $canditato->nombre; ?></h3>
-                        <img src="<?php echo $canditato->foto; ?>" alt="<?php echo $canditato->nombre; ?>">
+                        <img src="<?php echo RUTA_URL . "/public/img/candidatos/" . $canditato->foto; ?>" alt="<?php echo $canditato->nombre; ?>">
                     </label>
                 <?php } endforeach;?>
             <input type="radio" id="4blanco" name="4" value="4blanco" required>
