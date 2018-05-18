@@ -21,15 +21,15 @@
                 <td><?php echo $usuario->programa_nombre; ?></td>
                 <td>
                     <?php if($usuario->estado == 0){ ?>
-                        <form action="<?php echo RUTA_URL; ?>/Jurado/habilitarVotante" method="GET">
+                        <form action="<?php echo RUTA_URL; ?>/Jurado/habilitarVotante" method="POST">
                             <input type="hidden" name="id_usuario" value="<?php echo $usuario->id_usuario; ?>">
-                            <input class="btn" type="submit" value="Habilitar">
+                            <input class="btn btn-primary" type="submit" value="Habilitar">
                         </form>
                     <?php } ?>
                     <?php if($usuario->estado == 2){ ?>
-                        <form action="<?php echo RUTA_URL; ?>/Jurado/certificadoVotante" method="GET">
+                        <form action="<?php echo RUTA_URL; ?>/Jurado/certificadoVotante" method="POST">
                             <input type="hidden" name="id_usuario" value="<?php echo $usuario->id_usuario; ?>">
-                            <input class="btn" type="submit" value="Certificado">
+                            <input class="btn btn-success" type="submit" value="Certificado">
                         </form>
                     <?php } ?>
                 </td>
