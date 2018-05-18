@@ -9,6 +9,16 @@ class Usuario
         $this->db = new Base;
     }
 
+    public function habilitarUsuario($id_usuario){
+        $this->db->query("UPDATE usuarios SET estado=1 WHERE id_usuario = '$id_usuario'");
+        return $this->db->execute();
+    }
+
+    public function votoUsuario($id_usuario){
+        $this->db->query("UPDATE usuarios SET estado=2 WHERE id_usuario = '$id_usuario'");
+        return $this->db->execute();
+    }
+
     public function obtenerUsuarios(){
         $this->db->query('SELECT id_usuario, usuarios.nombre, usuarios.apellido, programas.nombre as programa_nombre, estado FROM usuarios JOIN programas ON usuarios.id_programa = programas.id_programa');
         return $this->db->registros();

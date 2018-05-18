@@ -42,7 +42,7 @@ class Votante extends Controlador {
                 }
             }
             endforeach;
-            $this->usuarioModelo->inhabilitar($_SESSION['id_usuario']);
+            $this->usuarioModelo->votoUsuario($_SESSION['id_usuario']);
             $this->certificado();
         }
     }
