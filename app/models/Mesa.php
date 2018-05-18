@@ -13,4 +13,9 @@ class Mesa
         $this->db->query('SELECT * FROM mesas');
         return $this->db->registros();
     }
+
+    public function obtenerMesaPorId($id){
+        $this->db->query("SELECT * FROM mesas where id_mesa='$id'");
+        return $this->db->registros();
+    }
 }

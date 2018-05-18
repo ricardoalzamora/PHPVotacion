@@ -31,6 +31,19 @@ function validarLogin2() {
     }
 }
 
+function validarLogin3() {
+    var verificar = true;
+
+    if(!document.getElementById("id_3").value || !document.getElementById("password_3").value){
+        error();
+        verificar = false;
+    }
+
+    if(verificar){
+        document.form_login_3.submit();
+    }
+}
+
 function validarCandidato() {
     var verificar = true;
 

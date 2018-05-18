@@ -5,11 +5,13 @@ class Votante extends Controlador {
     public $candidatoModelo;
     public $usuarioModelo;
     public $votoModelo;
+    public $mesaModelo;
 
     public function __construct() {
         $this->candidatoModelo = $this->modelo('Candidato');
         $this->usuarioModelo = $this->modelo('Usuario');
         $this->votoModelo  = $this->modelo('Voto');
+        $this->mesaModelo = $this->modelo('Mesa');
     }
 
     public function viewVotante() {
@@ -57,7 +59,8 @@ class Votante extends Controlador {
     public function login(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $usuario = $this->usuarioModelo->obtenerUsuarioPorId($_POST['id']);
-            if($usuario[0]->contrasenia == $_POST['password'] && $usuario[0]->votante == 1 && $usuario[0]->estado == 1){
+            $mesa = $this->mesaModelo->obtenerMesaPorId($usuario[0]->id_mesa);
+            if($usuario[0]->contrasenia == $_POST['password'] && $usuario[0]->votante == 1 && $usuario[0]->estado == 1 && $mesa[0]->habilitada == 1){
                 session_start();
                 $_SESSION['id_usuario'] = $usuario[0]->id_usuario;
                 header('location: ' . RUTA_URL . '/Votante/viewVotante');

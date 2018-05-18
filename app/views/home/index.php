@@ -8,6 +8,7 @@
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#id_votante" role="tab" aria-controls="id_votante" aria-selected="true">Votante</a>
             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#id_administrador" role="tab" aria-controls="id_administrador" aria-selected="false">Administrador</a>
+            <a class="nav-item nav-link" id="nav-jurado-tab" data-toggle="tab" href="#id_jurado" role="tab" aria-controls="id_jurado" aria-selected="false">Jurado</a>
         </div>
         <br>
         <div class="tab-content" id="nav-tabContent">
@@ -29,6 +30,15 @@
                     <input class="btn btn-success" type="button" id="btn-submit-2" value="Iniciar Sesión">
                 </form>
             </div>
+            <div class="tab-pane fade" id="id_jurado" role="tabpanel" aria-labelledby="nav-jurado-tab">
+                <form name="form_login_3" action="<?php echo RUTA_URL; ?>/Jurado/login" method="POST">
+                    <input class="form-control" type="number" name="id" id="id_3" placeholder="Documento">
+                    <br>
+                    <input class="form-control" type="password" name="password" id="password_3" placeholder="Contraseña">
+                    <br>
+                    <input class="btn btn-success" type="button" id="btn-submit-3" value="Iniciar Sesión">
+                </form>
+            </div>
         </div>
     </div>
 
@@ -36,6 +46,7 @@
         window.onload = function () {
             document.getElementById("btn-submit-1").onclick = validarLogin1;
             document.getElementById("btn-submit-2").onclick = validarLogin2;
+            document.getElementById("btn-submit-3").onclick = validarLogin3;
         }
     </script>
 
