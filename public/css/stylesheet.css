@@ -1,0 +1,112 @@
+* {
+    font-family: 'Roboto', 'Arial', sans-serif;
+}
+.header {
+    width: 100%;
+    height: 150px;
+    background-color: #284480;
+    border-bottom: solid #a02746;
+    position: relative;
+    display: inline-flex;
+}
+.content1{
+    display: inline-flex;
+}
+.content1 img {
+    width: 161px;
+}
+.title {
+    color: white;
+    font-size:40px;
+    padding-top:50px;
+    padding-left:15px;
+    display: inline-flex;
+    margin-right: 219px;
+}
+   
+.slider {
+    width: 100%;
+    height: 100%;
+    background-image: url("http://transparencia.unimagdalena.edu.co/Content/Imagenes/bg_entrada.jpg");
+}
+.slider h1 {
+    position: relative;
+    padding-top: 18%;
+    text-align: center;
+    text-decoration-color: #fff;
+    font-size: 2.625rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+}
+@media only screen and (max-width: 600px) {
+    .slider h1 {
+        position: relative;
+        padding-top: 18%;
+        text-align: left;
+        text-decoration-color: #fff;
+        text-anchor: 50px;
+        font-size: 2.62rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: white;
+    }
+    .title {
+        font-size: 20px;
+    }
+}
+.principal {
+    display: inline-flex;
+    width: 100%;
+    background-color: #ddd;
+    height: 500px;
+}
+.centro{
+    position: relative;
+    text-align: left;
+    width: 60%;
+    display: inline-block;
+    margin: auto;
+    border: 1px solid#337ab7;
+    background-color: #fff;
+    
+}                    
+@media only screen and (max-width: 700px) {
+    .centro{
+        width: 100%;
+    }
+}                    
+.centro .first {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    text-align: center;
+}
+.centro .inputs{
+    display: block;
+    width: 100%;
+    height: 34px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 15px;
+}                    
+footer {
+    position: relative;
+    background-color: #284480;
+    width: 100%;
+    height: 100%;
+}                        
+.texto {
+    text-align: center;
+    background-color: #284480;
+    color: #fff;
+    padding-top: 10px;
+}
