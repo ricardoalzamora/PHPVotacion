@@ -60,7 +60,7 @@ class Votante extends Controlador {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $usuario = $this->usuarioModelo->obtenerUsuarioPorId($_POST['id']);
             $mesa = $this->mesaModelo->obtenerMesaPorId($usuario[0]->id_mesa);
-            if($usuario[0]->contrasenia == $_POST['password'] && $usuario[0]->votante == 1 && $usuario[0]->estado == 1 && $mesa[0]->habilitada == 1){
+            if($usuario[0]->contrasenia == $_POST['password'] && $usuario[0]->votante == 1 && $usuario[0]->estado == 0 && $mesa[0]->habilitada == 1){
                 session_start();
                 $_SESSION['id_usuario'] = $usuario[0]->id_usuario;
                 header('location: ' . RUTA_URL . '/Votante/viewVotante');
