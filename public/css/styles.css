@@ -1,3 +1,7 @@
+main{
+    padding: 3%;
+}
+
 #form, #login_div{
     width: 70%;
     margin: auto;
@@ -21,4 +25,23 @@ h1{
     .div-certificado{
         width: 90%;
     }
+}
+
+.candidato{
+    width: 200px;
+}
+
+.div_blanco{
+    width: 200px;
+    height: 200px;
+    background: gainsboro;
+}
+.div-form-busqueda .div-alternative{
+    width: 50%;
+    background: red;
+}
+.div-nav{
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
 }
