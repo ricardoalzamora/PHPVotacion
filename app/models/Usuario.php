@@ -20,12 +20,23 @@ class Usuario
     }
 
     public function obtenerUsuarios(){
-        $this->db->query('SELECT id_usuario, usuarios.nombre, usuarios.apellido, programas.nombre as programa_nombre, estado FROM usuarios JOIN programas ON usuarios.id_programa = programas.id_programa');
+        $this->db->query('SELECT id_usuario, usuarios.nombre, usuarios.apellido, programas.nombre as programa_nombre, estado, id_mesa FROM usuarios JOIN programas ON usuarios.id_programa = programas.id_programa');
         return $this->db->registros();
     }
 
     public function obtenerUsuarioPorId($id){
         $this->db->query("SELECT *  FROM usuarios JOIN rol ON usuarios.id_rol = rol.id_rol WHERE id_usuario = '$id'");
+        return $this->db->registros();
+    }
+
+    public function obtenerUsuarioPorMesa($id_mesa){
+        $this->db->query("SELECT id_usuario, usuarios.nombre, usuarios.apellido, programas.nombre as programa_nombre, estado FROM usuarios JOIN programas ON usuarios.id_programa = programas.id_programa WHERE id_mesa = '$id_mesa'");
+        return $this->db->registros();
+    }
+
+    public function obtenerUsuarioPorMesaConsulta($id_mesa, $consulta){
+        $consulta.='%';
+        $this->db->query("SELECT id_usuario, usuarios.nombre, usuarios.apellido, programas.nombre as programa_nombre, estado FROM usuarios JOIN programas ON usuarios.id_programa = programas.id_programa WHERE id_mesa = '$id_mesa' AND id_usuario LIKE '$consulta'");
         return $this->db->registros();
     }
 

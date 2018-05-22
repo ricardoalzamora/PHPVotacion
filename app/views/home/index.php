@@ -8,6 +8,10 @@
     <h1>Bienvenido a tu sistema de votación</h1>
 
     <br>
+    <div id="look">
+        <h3>Revisa los Resultados Electorales.</h3>
+        <a class="btn btn-primary" href="<?php echo RUTA_URL; ?>/Home/estadistica">Revisar</a>
+    </div>
     <div class="principal">
         <div class="centro">
             <div class="first">

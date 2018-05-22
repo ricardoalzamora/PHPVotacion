@@ -12,14 +12,35 @@ class Jurado extends Controlador{
 
     public function  viewJurado(){
         Service::validarSesion();
-        $usuarios = $this->usuarioModelo->obtenerUsuarios();
         $jurado = $this->usuarioModelo->obtenerUsuarioPorId($_SESSION['id_usuario']);
+
+        if(isset($_POST['busquedaUsuario'])){
+            $usuariosDeLaMesa = $this->usuarioModelo->obtenerUsuarioPorMesaConsulta($jurado[0]->id_mesa, $_POST['busquedaUsuario']);
+        }else{
+            $usuariosDeLaMesa = $this->usuarioModelo->obtenerUsuarioPorMesa($jurado[0]->id_mesa);
+        }
         $datos = [
-            'usuarios' => $usuarios,
+            'usuariosMesa' => $usuariosDeLaMesa,
             'jurado' => $jurado[0],
             'titulo' => 'Jurado'
         ];
         $this->vista('home/Jurado/viewJurado', $datos);
+    }
+
+    public function buscarMesaUsuario(){
+        Service::validarSesion();
+        $jurado = $this->usuarioModelo->obtenerUsuarioPorId($_SESSION['id_usuario']);
+        if(isset($_POST['busquedaUsuario'])){
+            $usuariosDeLaMesa = $this->usuarioModelo->obtenerMesaUsuario($_POST['busquedaUsuario']);
+        }else{
+            $usuariosDeLaMesa = $this->usuarioModelo->obtenerUsuarios();
+        }
+        $datos = [
+            'usuariosMesa' => $usuariosDeLaMesa,
+            'jurado' => $jurado[0],
+            'titulo' => 'Buscar Sitio'
+        ];
+        $this->vista('home/Jurado/buscarMesaUsuario', $datos);
     }
 
     public function habilitarVotante(){
@@ -32,7 +53,7 @@ class Jurado extends Controlador{
     public function login(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $usuario = $this->usuarioModelo->obtenerUsuarioPorId($_POST['id']);
-            if($usuario[0]->contrasenia == $_POST['password'] && $usuario[0]->jurado == 1){
+            if($usuario[0]->contrasenia == $_POST['password'] && $usuario[0]->jurado == 1 /*&& getdate()['hours'] > 7*/){
                 session_start();
                 $_SESSION['id_usuario'] = $usuario[0]->id_usuario;
                 $datos=[

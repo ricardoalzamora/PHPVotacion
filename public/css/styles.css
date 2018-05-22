@@ -45,3 +45,9 @@ h1{
     display: inline-flex;
     justify-content: space-between;
 }
+
+#look{
+    text-align: center;
+    align-content: center;
+    margin: auto;
+}
