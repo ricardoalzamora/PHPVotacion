@@ -6,6 +6,7 @@
         }
 
         public static function validarSesion(){
+            date_default_timezone_set('America/Bogota');
             if(!isset($_SESSION)){
                 session_start();
             }
@@ -51,5 +52,24 @@
                 echo 'Mailer Error: ' . $mail->ErrorInfo;
             }
             unlink ('archivo_pdf.pdf');
+        }
+
+        public static function certificadoUsuario($votante){
+            require_once('fpdf/fpdf.php');
+            ob_start();
+            $pdf=new FPDF();
+            $pdf->AddPage();
+            $pdf->SetFont('Arial','B',16);
+            $pdf->Cell(80);
+            $pdf->Cell(40,10,"Se certifica que la persona " . $votante[0]->nombre . " " . $votante[0]->apellido .
+                " y documento " . $votante[0]->id_usuario, 0, 0, "C");
+            $pdf->Ln();
+            $pdf->Cell(80);
+            $pdf->Cell(40,10, "ha cumplido con el deber de votar", 0, 0, "C");
+            $pdf->Ln();
+            $pdf->Cell(80);
+            $pdf->Cell(40,10, utf8_decode("el día " . date("j, n, Y")), 0, 0, "C");
+            $pdf->Output('archivo_pdf.pdf', 'D');
+            ob_end_flush();
         }
     }

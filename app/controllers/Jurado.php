@@ -69,10 +69,17 @@ class Jurado extends Controlador{
         $this->vista('home/Jurado/resultadosMesa', $datos);
     }
 
+    public function certificadoVotante(){
+        if($_SERVER['REQUEST_METHOD'] == "POST"){
+            $votante = $this->usuarioModelo->obtenerUsuarioPorId($_POST['id_usuario']);
+            Service::certificadoUsuario($votante);
+        }
+    }
+
     public function login(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $usuario = $this->usuarioModelo->obtenerUsuarioPorId($_POST['id']);
-            if($usuario[0]->contrasenia == $_POST['password'] && $usuario[0]->jurado == 1 /*&& getdate()['hours'] > 7*/){
+            if($usuario[0]->contrasenia == $_POST['password'] && $usuario[0]->jurado == 1 && getdate()['hours'] > 7){
                 session_start();
                 $_SESSION['id_usuario'] = $usuario[0]->id_usuario;
                 $datos=[
