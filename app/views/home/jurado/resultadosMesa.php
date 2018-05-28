@@ -78,4 +78,8 @@
 
 ?>
 
+<div>
+    <p>Cantidad de votos en la mesa : <?php echo $datos['cantidadVotosMesa'][0]->cantidad + $datos['cantidadVotosBlancosMesa'][0]->cantidad; ?></p>
+</div>
+
 <?php require RUTA_APP . '/views/inc/footer.php' ;?>

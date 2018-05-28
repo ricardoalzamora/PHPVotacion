@@ -10,7 +10,8 @@
     <br>
     <div id="look">
         <h3>Revisa los Resultados Electorales.</h3>
-        <a class="btn btn-primary" href="<?php echo RUTA_URL; ?>/Home/estadistica">Revisar</a>
+        <a class="btn btn-primary" href="<?php echo RUTA_URL; ?>/Home/estadistica" target="_blank">Consultar</a>
+        <a class="btn btn-primary" href="<?php echo RUTA_URL; ?>/Home/resultadosMesa" target="_blank">Consultal Mesa</a>
     </div>
     <div class="principal">
         <div class="centro">
