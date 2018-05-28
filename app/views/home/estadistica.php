@@ -20,9 +20,9 @@
     $nombreOrgano = "";
     foreach ($datos['votos'] as $voto)  :
         if($voto->id_organo == $i){
-            $nombreOrgano = $voto->id_organo;
-            $labels.= '"' . $voto->nombre_candidato . ' ' . $voto->apellido_candidato . '",';
-            $datas.= $voto->cantidad . ",";
+            $nombreOrgano = $voto->nombre_organo;
+            $labels.= '"' . $voto->nombre_candidato . ' ' . $voto->apellido_candidato . '", ';
+            $datas.= $voto->cantidad . ", ";
         }
     endforeach;
     foreach ($datos['votosBlancos'] as $voto)  :

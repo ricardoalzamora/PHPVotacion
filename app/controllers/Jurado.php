@@ -56,10 +56,14 @@ class Jurado extends Controlador{
         Service::validarSesion();
         $jurado = $this->usuarioModelo->obtenerUsuarioPorId($_SESSION['id_usuario']);
         $votos = $this->votoModelo->obtenerVotosMesa($jurado[0]->id_mesa);
+        $cantidadVotosMesa = $this->votoModelo->cantidadVotosMesa($jurado[0]->id_mesa);
+        $cantidadVotosBlancosMesa = $this->votoModelo->cantidadVotosBlancosMesa($jurado[0]->id_mesa);
         $votosBlancos = $this->votoModelo->obtenerVotosBlancosMesa($jurado[0]->id_mesa);
         $datos = [
             'votos' => $votos,
             'votosBlancos' => $votosBlancos,
+            'cantidadVotosMesa' => $cantidadVotosMesa,
+            'cantidadVotosBlancosMesa' => $cantidadVotosBlancosMesa,
             'titulo' => 'Estadística mesa'
         ];
         $this->vista('home/Jurado/resultadosMesa', $datos);

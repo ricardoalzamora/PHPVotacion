@@ -19,12 +19,22 @@ class Voto
         return $this->db->registros();
     }
 
+    public function cantidadVotosMesa($id_mesa){
+        $this->db->query("SELECT count(id_mesa) as cantidad FROM votos WHERE id_mesa = '$id_mesa'");
+        return $this->db->registros();
+    }
+
     public function obtenerVotosBlancos(){
         $this->db->query('select organo, count(organo) as cantidad, id_mesa, nombre from voto_blanco JOIN organos ON organo = id_organo group by organo');
         return $this->db->registros();
     }
     public function obtenerVotosBlancosMesa($id_mesa){
         $this->db->query("select organo, count(organo) as cantidad, id_mesa, nombre from voto_blanco JOIN organos ON organo = id_organo WHERE id_mesa = '$id_mesa' group by organo");
+        return $this->db->registros();
+    }
+
+    public function cantidadVotosBlancosMesa($id_mesa){
+        $this->db->query("SELECT count(id_mesa) as cantidad FROM voto_blanco WHERE id_mesa = '$id_mesa'");
         return $this->db->registros();
     }
 
