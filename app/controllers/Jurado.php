@@ -4,10 +4,12 @@ class Jurado extends Controlador{
 
     private $usuarioModelo;
     private $juradoModelo;
+    private $votoModelo;
 
     public function __construct(){
         $this->usuarioModelo = $this->modelo('Usuario');
         $this->juradoModelo = $this->modelo('JuradoModel');
+        $this->votoModelo = $this->modelo('Voto');
     }
 
     public function  viewJurado(){
@@ -48,6 +50,19 @@ class Jurado extends Controlador{
             $this->usuarioModelo->habilitarUsuario($_POST['id_usuario']);
         }
         header('location: ' . RUTA_URL . "/Jurado/viewJurado");
+    }
+
+    public function resultadosMesa(){
+        Service::validarSesion();
+        $jurado = $this->usuarioModelo->obtenerUsuarioPorId($_SESSION['id_usuario']);
+        $votos = $this->votoModelo->obtenerVotosMesa($jurado[0]->id_mesa);
+        $votosBlancos = $this->votoModelo->obtenerVotosBlancosMesa($jurado[0]->id_mesa);
+        $datos = [
+            'votos' => $votos,
+            'votosBlancos' => $votosBlancos,
+            'titulo' => 'Estadística mesa'
+        ];
+        $this->vista('home/Jurado/resultadosMesa', $datos);
     }
 
     public function login(){

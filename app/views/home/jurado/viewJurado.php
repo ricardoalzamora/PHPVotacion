@@ -12,6 +12,7 @@
             </form>
         </div>
         <div class="div-alternative">
+            <a class="btn btn-secondary" target="_blank" href="<?php echo RUTA_URL; ?>/Jurado/resultadosMesa">Resultado Mesa</a>
             <a class="btn btn-secondary" target="_blank" href="<?php echo RUTA_URL; ?>/Jurado/buscarMesaUsuario">Buscar Mesa de Usuario</a>
             <a class="btn btn-danger" href="<?php echo RUTA_URL; ?>/Jurado/login">Salir</a>
         </div>
