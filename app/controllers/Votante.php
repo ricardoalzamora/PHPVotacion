@@ -50,8 +50,10 @@ class Votante extends Controlador {
     public function certificado(){
         Service::validarSesion();
         $votante = $this->usuarioModelo->obtenerUsuarioPorId($_SESSION['id_usuario']);
+        Service::certificado($votante);
         $datos = [
-            'votante' => $votante[0]
+            'votante' => $votante[0],
+            'titulo' => 'Certificado'
         ];
         $this->vista('home/Votante/certificado', $datos);
     }
