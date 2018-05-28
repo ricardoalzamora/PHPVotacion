@@ -12,7 +12,10 @@
             </form>
         </div>
         <div class="div-alternative">
-            <a class="btn btn-secondary" target="_blank" href="<?php echo RUTA_URL; ?>/Jurado/resultadosMesa">Resultado Mesa</a>
+            <?php if(getdate()['hours'] >= 16){ ?>
+                <a class="btn btn-secondary" target="_blank" href="<?php echo RUTA_URL; ?>/Jurado/resultadosMesa">Resultado Mesa</a>
+            <?php } ?>
+
             <a class="btn btn-secondary" target="_blank" href="<?php echo RUTA_URL; ?>/Jurado/buscarMesaUsuario">Buscar Mesa de Usuario</a>
             <a class="btn btn-danger" href="<?php echo RUTA_URL; ?>/Jurado/login">Salir</a>
         </div>
@@ -38,14 +41,14 @@
                 <td><?php echo $usuario->apellido; ?></td>
                 <td><?php echo $usuario->programa_nombre; ?></td>
                 <td>
-                    <?php if($usuario->estado == 0 && getdate()['hours'] > 8 && getdate()['hours'] < 16){ ?>
+                    <?php if($usuario->estado == 0 && getdate()['hours'] >= 8 && getdate()['hours'] < 16){ ?>
                         <form action="<?php echo RUTA_URL; ?>/Jurado/habilitarVotante" method="POST">
                             <input type="hidden" name="id_usuario" value="<?php echo $usuario->id_usuario; ?>">
                             <input class="btn btn-primary" type="submit" value="Habilitar">
                         </form>
                     <?php } ?>
                     <?php if($usuario->estado == 1){ ?>
-                        <p>Votando</p>
+                        <p>Habilitado</p>
                     <?php } ?>
                     <?php if($usuario->estado == 2){ ?>
                         <form action="<?php echo RUTA_URL; ?>/Jurado/certificadoVotante" method="POST">

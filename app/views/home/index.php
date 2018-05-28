@@ -7,12 +7,15 @@
     </div>
     <h1>Bienvenido a tu sistema de votación</h1>
 
-    <br>
-    <div id="look">
-        <h3>Revisa los Resultados Electorales.</h3>
-        <a class="btn btn-primary" href="<?php echo RUTA_URL; ?>/Home/estadistica" target="_blank">Consultar</a>
-        <a class="btn btn-primary" href="<?php echo RUTA_URL; ?>/Home/resultadosMesa" target="_blank">Consultal Mesa</a>
-    </div>
+    <?php if(getdate()['hours'] >= 16){ ?>
+        <br>
+        <div id="look">
+            <h3>Revisa los Resultados Electorales.</h3>
+            <a class="btn btn-primary" href="<?php echo RUTA_URL; ?>/Home/estadistica" target="_blank">Consultar</a>
+            <a class="btn btn-primary" href="<?php echo RUTA_URL; ?>/Home/resultadosMesa" target="_blank">Consultal Mesa</a>
+        </div>
+    <?php } ?>
+
     <div class="principal">
         <div class="centro">
             <div class="first">

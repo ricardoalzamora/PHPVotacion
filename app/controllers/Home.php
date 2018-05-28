@@ -13,6 +13,7 @@
 		}
 
 		public function index() {
+            date_default_timezone_set('America/Bogota');
 		    session_start();
             session_destroy();
 			$usuarios = $this->usuarioModelo->obtenerUsuarios();
